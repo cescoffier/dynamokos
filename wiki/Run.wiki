@@ -1,0 +1,39 @@
+#summary How to run the demo
+#labels Featured,Phase-Deploy
+= Introduction =
+This page explains how to run the demos.
+
+= Getting the demo =
+  # Download a *-runtime* file from the download section.
+  # Unzip it
+  # Open *two* shell / terminal / console and navigate (twice) to (replace XXX by the version)
+{{{$unzip_location/Dynamokos-XXX/runtime}}}
+  
+= Post 1 =
+
+To run the demo of the post 1, execute in a first console:
+{{{
+java -Dfelix.config.properties=file:./conf/oracle-dosgi.properties -jar bin/felix.jar cache/oracle-dosgi
+}}}
+
+This launches the Oracle OSGi platform.
+
+Then launch in a second console:
+{{{
+java -Dfelix.config.properties=file:./conf/client-dosgi.properties -jar bin/felix.jar cache/client-dosgi
+}}}
+
+This launches the client and the web-part.
+
+Once done, open a browser and go to [http://localhost:8080/dynamokos/index.html].
+
+That's it !
+
+= Post 2 =
+Coming soon
+
+= Post 3 =
+Coming soon
+
+= Post 4 =
+Coming soon
