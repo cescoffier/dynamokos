@@ -6,8 +6,7 @@ This page explains how to run the demos.
 = Getting the demo =
   # Download a *-runtime* file from the download section.
   # Unzip it
-  # Open *two* shell / terminal / console and navigate (twice) to (replace XXX by the version)
-{{{$unzip_location/Dynamokos-XXX/runtime}}}
+  # Open *two* shells / terminals / consoles and navigate (twice) to  : {{{$unzip_location/Dynamokos-XXX/runtime}}} (replace XXX by the version)
   
 = Post 1 =
 
