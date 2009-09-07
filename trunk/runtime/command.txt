@@ -1,0 +1,2 @@
+java -Dfelix.config.properties=file:./conf/oracle-dosgi.properties -jar bin/felix.jar cache/oracle-dosgi
+java -Dfelix.config.properties=file:./conf/client-dosgi.properties -jar bin/felix.jar cache/client-dosgi
