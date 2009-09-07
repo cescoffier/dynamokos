@@ -1,0 +1,20 @@
+<assembly>
+  <id>runtime</id>
+  <formats>
+    <format>tar.gz</format>
+    <format>zip</format>
+  </formats>
+  <fileSets>
+    <fileSet>
+      <includes>
+        <include>runtime/**</include>
+      </includes>
+      <excludes>
+        <exclude>**/target*</exclude>
+        <exclude>target</exclude>
+        <exclude>**/pom.xml</exclude>
+      </excludes>
+      <useDefaultExcludes>true</useDefaultExcludes>
+    </fileSet>
+  </fileSets>
+</assembly>
