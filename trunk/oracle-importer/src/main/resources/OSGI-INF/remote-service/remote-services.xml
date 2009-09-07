@@ -1,0 +1,17 @@
+<service-descriptions xmlns="http://www.osgi.org/xmlns/sd/v1.0.0">
+
+  <!-- 
+  Just imports the Prediction Service from the other OSGi platform.
+  Note that the location is known (url written).
+  
+  DOSGi reads this file and will create the corresponding proxy (exposing
+  the Prediction service).
+   -->
+
+  <service-description>
+    <provide interface="de.akquinet.gomobile.dynamokos.prediction.Prediction" />
+    <property name="service.exported.interfaces">*</property>
+    <property name="service.exported.configs">org.apache.cxf.ws</property>
+    <property name="org.apache.cxf.ws.address">http://localhost:9090/oracle</property>
+  </service-description>
+</service-descriptions>
