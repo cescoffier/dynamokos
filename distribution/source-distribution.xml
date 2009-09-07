@@ -1,0 +1,28 @@
+<assembly>
+  <id>src</id>
+  <formats>
+    <format>tar.gz</format>
+    <format>zip</format>
+  </formats>
+  <fileSets>
+    <fileSet>
+      <includes>
+        <include>**/README*</include>
+        <include>**/LICENSE*</include>
+        <include>**/NOTICE*</include>
+        <include>**/pom.xml</include>
+        <include>**/src/**</include>
+        <!--  Runtime -->
+        <include>runtime/bin/**</include>
+        <include>runtime/bundle/**</include>
+        <include>runtime/conf/**</include>
+        <include>runtime/command.txt</include>
+      </includes>
+      <excludes>
+        <exclude>**/target*</exclude>
+        <exclude>target</exclude>
+      </excludes>
+      <useDefaultExcludes>true</useDefaultExcludes>
+    </fileSet>
+ </fileSets>
+</assembly>
