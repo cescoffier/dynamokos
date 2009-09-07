@@ -1,0 +1,113 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>Dynamokos</artifactId>
+    <groupId>de.akquinet.gomobile.dynamokos</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.akquinet.gomobile.dynamokos</groupId>
+  <artifactId>runtime</artifactId>
+  <packaging>pom</packaging>
+  <name>Dynamokos Runtime</name>
+  <version>0.0.1-SNAPSHOT</version>
+  <description>Provides configured OSGi framework to run the dynamokos  demo</description>
+
+
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-oracle-dosgi</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>${pom.groupId}</groupId>
+                  <artifactId>prediction</artifactId>
+                  <version>${version}</version>
+                  <type>jar</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${basedir}/oracle-dosgi</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>${pom.groupId}</groupId>
+                  <artifactId>oracle</artifactId>
+                  <version>${pom.version}</version>
+                  <type>jar</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${basedir}/oracle-dosgi</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>copy-client-dosgi</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>${pom.groupId}</groupId>
+                  <artifactId>prediction</artifactId>
+                  <version>${version}</version>
+                  <type>jar</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${basedir}/client-dosgi</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>${pom.groupId}</groupId>
+                  <artifactId>oracle-importer</artifactId>
+                  <version>${pom.version}</version>
+                  <type>jar</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${basedir}/client-dosgi</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>${pom.groupId}</groupId>
+                  <artifactId>client-ui</artifactId>
+                  <version>${pom.version}</version>
+                  <type>jar</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${basedir}/client-dosgi</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>client-dosgi</directory>
+            </fileset>
+            <fileset>
+              <directory>oracle-dosgi</directory>
+            </fileset>
+            <fileset>
+              <directory>cache</directory>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+
+
+    </plugins>
+  </build>
+
+
+</project>
