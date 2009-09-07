@@ -2,12 +2,12 @@
 #labels Featured,Phase-Design
 
 = Introduction =
-This page shows the different architectures of the dynamokos application accross the blog posts.
+This page shows the different architectures of the dynamokos application across the blog posts.
 
 
 = Post 1 =
 [http://dynamokos.googlecode.com/svn/resources/architecture-p1.png]
 
-The first post just relies on Distributed Services (Apache CXF Distributed OSGi). the oracle is exported using SOAP (Web Service).The client *knows* the oracle location, and use it (also using DOSGi). 
+The first post just relies on Distributed Services (Apache CXF Distributed OSGi). the oracle is exported using SOAP (Web Service).The client *KNOWS* the oracle location, and uses it (also using DOSGi). 
 
-However, this does not handle the dynamism and does not check the accessibility of the oracle. So, if you don't start the oracle, the client will still be ok, the {{{Prediction}}} service will still be provided! The only issue is that the web client will not work correctly as the service in NOT there.
+However, this does not handle the dynamism and does not check the accessibility of the oracle. So, if you don't start the oracle, the client will still be ok, the {{{Prediction}}} service will still be provided! The only issue is that the web client will not work correctly as the service in *NOT* there.
