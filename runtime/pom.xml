@@ -11,7 +11,7 @@
   <packaging>pom</packaging>
   <name>Dynamokos Runtime</name>
   <version>0.0.1-SNAPSHOT</version>
-  <description>Provides configured OSGi framework to run the dynamokos  demo</description>
+  <description>Provides configured OSGi framework to run the dynamokos demo</description>
 
 
 
@@ -32,7 +32,7 @@
                 <artifactItem>
                   <groupId>${pom.groupId}</groupId>
                   <artifactId>prediction</artifactId>
-                  <version>${version}</version>
+                  <version>${pom.version}</version>
                   <type>jar</type>
                   <overWrite>true</overWrite>
                   <outputDirectory>${basedir}/oracle-dosgi</outputDirectory>
@@ -60,7 +60,7 @@
                 <artifactItem>
                   <groupId>${pom.groupId}</groupId>
                   <artifactId>prediction</artifactId>
-                  <version>${version}</version>
+                  <version>${pom.version}</version>
                   <type>jar</type>
                   <overWrite>true</overWrite>
                   <outputDirectory>${basedir}/client-dosgi</outputDirectory>
@@ -84,8 +84,93 @@
               </artifactItems>
             </configuration>
           </execution>
+          
+          <execution>
+            <id>copy-oracle-dosgi-zookeeper</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>${pom.groupId}</groupId>
+                  <artifactId>prediction</artifactId>
+                  <version>${pom.version}</version>
+                  <type>jar</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${basedir}/oracle-dosgi-zookeeper</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>${pom.groupId}</groupId>
+                  <artifactId>oracle</artifactId>
+                  <version>${pom.version}</version>
+                  <type>jar</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${basedir}/oracle-dosgi-zookeeper</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+          
+          <execution>
+            <id>copy-client-dosgi-zookeeper</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>${pom.groupId}</groupId>
+                  <artifactId>prediction</artifactId>
+                  <version>${version}</version>
+                  <type>jar</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${basedir}/client-dosgi-zookeeper</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>${pom.groupId}</groupId>
+                  <artifactId>client-ui</artifactId>
+                  <version>${pom.version}</version>
+                  <type>jar</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${basedir}/client-dosgi-zookeeper</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
+      
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <configuration>
+            <tasks>
+            <copy todir="client-dosgi-zookeeper">
+              <fileset dir="zookeeper/bundle">
+                <include name="**/*.jar" />
+                <include name="**/*.cfg" />
+              </fileset>
+            </copy>
+            <copy todir="oracle-dosgi-zookeeper">
+              <fileset dir="zookeeper/bundle">
+                <include name="**/*.jar" />
+                <include name="**/*.cfg" />
+              </fileset>
+            </copy>
+            </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
 
       <plugin>
         <artifactId>maven-clean-plugin</artifactId>
@@ -97,6 +182,12 @@
             </fileset>
             <fileset>
               <directory>oracle-dosgi</directory>
+            </fileset>
+            <fileset>
+              <directory>client-dosgi-zookeeper</directory>
+            </fileset>
+            <fileset>
+              <directory>oracle-dosgi-zookeeper</directory>
             </fileset>
             <fileset>
               <directory>cache</directory>

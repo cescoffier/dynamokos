@@ -1,2 +1,12 @@
+== DOSGi (post 1) ==
 java -Dfelix.config.properties=file:./conf/oracle-dosgi.properties -jar bin/felix.jar cache/oracle-dosgi
 java -Dfelix.config.properties=file:./conf/client-dosgi.properties -jar bin/felix.jar cache/client-dosgi
+
+== DOSGi + Zookeeper (post 2) ==
+Linux : sh ./zookeeper/bin/zkServer.sh start // Requires Java 6
+Windows: zookeeper\bin\zkServer.cmd start    // Requires Java 6
+java -Dfelix.config.properties=file:./conf/oracle-dosgi-zookeeper.properties -jar bin/felix.jar cache/oracle-dosgi-zookeeper
+java -Dfelix.config.properties=file:./conf/client-dosgi-zookeeper.properties -jar bin/felix.jar cache/client-dosgi-zookeeper
+
+
+
