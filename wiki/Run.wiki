@@ -28,7 +28,7 @@ Once done, open a browser and go to [http://localhost:8080/dynamokos/index.html]
 
 That's it !
 
-= Post 2 : Introducing Dyanmic Discovery =
+= Post 2 : Introducing Dynamic Discovery =
 First start the zookeeper server (require Java 6):
 {{{
 sh ./zookeeper/bin/zkServer.sh start
