@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.felix.ipojo.annotations.Component;
+import org.apache.felix.ipojo.annotations.Invalidate;
 import org.apache.felix.ipojo.annotations.Requires;
 import org.apache.felix.ipojo.annotations.Validate;
 import org.osgi.service.http.HttpService;
@@ -56,6 +57,22 @@ public class OracleServlet extends HttpServlet {
         // Expose the web page
         http.registerResources("/dynamokos", "web", null);        
         
+    }
+    
+    /**
+     * This methods is called either when the bundle is stopped,
+     * or if one of the two services disappears.
+     * This method has to be developed defensively to avoid null pointer exception
+     * because services are not necessary available.
+     */
+    @Invalidate
+    public void stop() {
+        // check if the HTTP service is still there:
+        if (http != null) { // If there, don't worry about the synchronization, 
+                            // iPOJO manages that for you.
+            http.unregister("/oracle");
+            http.unregister("/dynamokos");
+        }
     }
 
     /**
