@@ -1,0 +1,139 @@
+<html xml:lang="eng" xmlns="http://www.w3.org/1999/xhtml" lang="eng">
+<head>
+
+  <title>Dynamokos Oracle</title>
+  <link rel="stylesheet" type="text/css" href="http://o.aolcdn.com/dojo/1.3/dojo/resources/dojo.css"/>
+  <link rel="stylesheet" type="text/css" href="http://o.aolcdn.com/dojo/1.3/dijit/themes/tundra/tundra.css"/>
+  <link rel="stylesheet" href="res/style.css" type="text/css">
+  
+  <script
+  djConfig="parseOnLoad:true" type="text/javascript"
+  src="http://o.aolcdn.com/dojo/1.3/dojo/dojo.xd.js">
+  </script>
+  
+  
+  <script type="text/javascript">  
+       dojo.require("dojo.parser");
+       dojo.require("dijit.Tooltip");
+   function askOracle() {
+    e = document.getElementById('qel');
+    
+    if (dojo.trim(e.value) != '') {
+      
+      document.getElementById('answer').innerHTML = 'Contacting Oracle..';
+      
+      /* Use dojo to get the oracle prediction... */
+      console.log("Oracle ... for " + e.value);
+      
+      dojo.xhrGet( {
+        // The following URL must match that used to test the server.
+        url: "http://localhost:8080/oracle", 
+        handleAs: "text",
+
+        timeout: 5000, // Time in milliseconds
+        
+        content: {
+                    question: e.value,  // Question parameter
+                },
+
+        // The LOAD function will be called on a successful response.
+        load: function(response, ioArgs) {
+          document.getElementById('answer').innerHTML = response;
+          return response;
+        },
+
+        // The ERROR function will be called in an error case.
+        error: function(response, ioArgs) {
+          console.error("HTTP status code: ", ioArgs.xhr.status);
+          document.getElementById('answer').innerHTML = 'Oracle temporary unavailable';
+          return response;
+          }
+        });
+      
+        
+    } else {
+      document.getElementById('answer').innerHTML = 'You have to ask something';
+    }
+  
+  }
+  
+  </script>
+  
+  <script type="text/javascript">
+			dojo.require("dojox.timing._base");
+			dojo.require("dojo._base.html");
+			
+			// Previous state of the prediction
+			var p_state;
+			
+			function updateUI (state) {
+				if ( p_state != state){
+					p_state = state;
+					
+					if (state == "available") {
+						dojo.attr("qel","disabled",false);
+						dojo.attr("askbutton","disabled",false);
+						dojo.attr("imgball8","src","res/8ball.jpg");
+					}
+					
+					if (state == "unavailable"){
+						dojo.attr("qel","disabled",true);
+						dojo.attr("askbutton","disabled",true);
+						dojo.attr("imgball8","src","res/Un8ball.jpg");
+					}
+				}
+			}
+			
+            dojo.addOnLoad(function() {
+                    var timer = new dojox.timing.Timer();
+				    timer.setInterval(2000); // Interval in millisecond
+                    
+                    timer.onTick = function () { dojo.xhrPost( {
+                        url: "http://localhost:8080/oracle",
+                   	    handleAs: "text",
+                        timeout: 5000, // Time in milliseconds
+                 	
+                 	    content: { }, // no content
+                 	
+                       	// The LOAD function will be called on a successful response.
+                 	    load: function(response, ioArgs) {
+                 		  updateUI(response);
+                 		  return response;
+                 	    },
+                 	
+                     	// The ERROR function will be called in an error case.
+                 	    error: function(response, ioArgs) {	
+                 	    	console.error("HTTP status code: ", ioArgs.xhr.status);
+                 	    	
+                 	    	// Stop the timer, if the ui server is down
+                 	    	//if ( ioArgs.xhr.status == "0" ) {
+							//	timer.stop();                 	    	
+                 	    	//}
+                 	    	
+                 	    	return response;
+                 	    }
+                        });}
+                 
+                    timer.start();
+            });
+  </script>
+  
+
+</head>
+<body class="tundra">
+ <a name="top"></a>
+  <div id="wwrapper"><div id="uwrapper"><div id="vwrapper">
+    <div id="wrapper">
+      <div id="top"></div>
+      <div id="logo"><img src="res/logo.png" width="413" height="123"></div>
+      <div id="q"><input id="qel" type="text"><input id="askbutton" class="qbutton" value="Ask" onclick="askOracle();" type="submit"></div>
+      <div id="answer">Ask the dynamokos oracle!</div>
+      <div id="ball8"><a href="about.html" id="about-link"><img id="imgball8" src="res/8ball.jpg"></a></div>  
+    </div>
+
+    <div id="bottox"></div>
+
+  </div></div></div>
+
+</body>
+</html>

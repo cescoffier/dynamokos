@@ -11,6 +11,7 @@
     <module>oracle</module>
     <module>oracle-importer</module>
     <module>client-ui</module>
+    <module>client-ui-pull</module>
     <module>runtime</module>
   </modules>
   
