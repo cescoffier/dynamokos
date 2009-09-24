@@ -140,6 +140,62 @@
               </artifactItems>
             </configuration>
           </execution>
+           
+	  <execution>
+            <id>copy-client-dosgi-zookeeper-pull</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>${pom.groupId}</groupId>
+                  <artifactId>prediction</artifactId>
+                  <version>${version}</version>
+                  <type>jar</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${basedir}/client-dosgi-zookeeper-pull</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>${pom.groupId}</groupId>
+                  <artifactId>client-ui-pull</artifactId>
+                  <version>${pom.version}</version>
+                  <type>jar</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${basedir}/client-dosgi-zookeeper-pull</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+
+         <execution>
+            <id>copy-client-dosgi-zookeeper-cometd</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>${pom.groupId}</groupId>
+                  <artifactId>prediction</artifactId>
+                  <version>${version}</version>
+                  <type>jar</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${basedir}/client-dosgi-zookeeper-cometd</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>${pom.groupId}</groupId>
+                  <artifactId>cometd-server</artifactId>
+                  <version>${pom.version}</version>
+                  <type>jar</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${basedir}/client-dosgi-zookeeper-cometd</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
       
@@ -162,6 +218,21 @@
                 <include name="**/*.cfg" />
               </fileset>
             </copy>
+            <copy todir="client-dosgi-zookeeper-pull">
+              <fileset dir="zookeeper/bundle">
+                <include name="**/*.jar" />
+                <include name="**/*.cfg" />
+              </fileset>
+            </copy>
+            <copy todir="client-dosgi-zookeeper-cometd">
+              <fileset dir="zookeeper/bundle">
+                <include name="**/*.jar" />
+                <include name="**/*.cfg" />
+              </fileset>
+            </copy>
+	    <echo file="client-dosgi-zookeeper-cometd/org.ops4j.pax.web.cfg">
+		org.osgi.service.http.port=6666
+	    </echo>
             </tasks>
             </configuration>
             <goals>
@@ -188,6 +259,12 @@
             </fileset>
             <fileset>
               <directory>oracle-dosgi-zookeeper</directory>
+            </fileset>
+            <fileset>
+              <directory>client-dosgi-zookeeper-pull</directory>
+            </fileset>
+            <fileset>
+              <directory>client-dosgi-zookeeper-cometd</directory>
             </fileset>
             <fileset>
               <directory>cache</directory>

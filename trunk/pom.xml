@@ -12,6 +12,7 @@
     <module>oracle-importer</module>
     <module>client-ui</module>
     <module>client-ui-pull</module>
+    <module>cometd-server</module>
     <module>runtime</module>
   </modules>
   
