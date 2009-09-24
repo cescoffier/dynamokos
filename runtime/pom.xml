@@ -230,9 +230,12 @@
                 <include name="**/*.cfg" />
               </fileset>
             </copy>
-	    <echo file="client-dosgi-zookeeper-cometd/org.ops4j.pax.web.cfg">
-		org.osgi.service.http.port=6666
-	    </echo>
+            <copy todir="client-dosgi-zookeeper-cometd">
+              <fileset dir="cometd">
+                <include name="*.jar" />
+                <include name="*.cfg" />
+              </fileset>
+            </copy>
             </tasks>
             </configuration>
             <goals>
