@@ -13,6 +13,7 @@
     <module>client-ui</module>
     <module>client-ui-pull</module>
     <module>cometd-server</module>
+    <module>cometd-bridge</module>
     <module>runtime</module>
   </modules>
   

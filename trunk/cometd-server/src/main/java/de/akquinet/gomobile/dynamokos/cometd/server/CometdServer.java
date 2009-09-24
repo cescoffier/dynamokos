@@ -1,5 +1,8 @@
 package de.akquinet.gomobile.dynamokos.cometd.server;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import javax.servlet.ServletException;
 
 import org.apache.felix.ipojo.annotations.Component;
@@ -33,7 +36,7 @@ public class CometdServer implements CometdServletPublication {
 	 * The URL of the published Cometd Servlet
 	 */
 	@ServiceProperty(name = CometdServletPublication.PROP_COMETD_URL)
-	private String cometd_url = "http://localhost:8080/cometd";
+	private String cometd_url = null;
 
 	/**
 	 * iPOJO injects the HTTP Service in this member.
@@ -54,6 +57,8 @@ public class CometdServer implements CometdServletPublication {
 		// Expose a Continuation cometd Servlet
 		http.registerServlet("/cometd", new ContinuationCometdServlet(), null,
 				null);
+		
+		cometd_url = "http://localhost:8080/cometd";
 	}
 
 	/**
@@ -68,6 +73,17 @@ public class CometdServer implements CometdServletPublication {
 		if (http != null) { // If there, don't worry about the synchronization,
 			// iPOJO manages that for you.
 			http.unregister("/cometd");
+		}
+	}
+
+	/**
+	 * Return the URL of the published Cometd Servlet.
+	 */
+	public URL getURL() {
+		try {
+			return new URL(cometd_url);
+		} catch (MalformedURLException e) {
+			return null;
 		}
 	}
 }
