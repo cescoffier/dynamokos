@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iPOJO>
+	<component className="remote.protocols.eacometdbridge.impl.CometdEventAdminBridge">
+		<provides specifications="remote.protocols.eacometdbridge.EABridge"/>
+		<requires field="m_eventadmin" />
+		<requires field="m_server" filter="(cometd.server.url=http://localhost:8080/cometd)" />
+		<callback transition="validate" method="start" />
+		<callback transition="invalidate" method="stop" />
+	</component>
+
+	<instance component="remote.protocols.eacometdbridge.impl.CometdEventAdminBridge" name="Event-Admin Cometd Bridge">
+	</instance>
+</iPOJO>

@@ -193,6 +193,14 @@
                   <overWrite>true</overWrite>
                   <outputDirectory>${basedir}/client-dosgi-zookeeper-cometd</outputDirectory>
                 </artifactItem>
+		<artifactItem>
+                  <groupId>${pom.groupId}</groupId>
+                  <artifactId>cometd-bridge</artifactId>
+                  <version>${pom.version}</version>
+                  <type>jar</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${basedir}/client-dosgi-zookeeper-cometd</outputDirectory>
+                </artifactItem>
               </artifactItems>
             </configuration>
           </execution>
