@@ -1,0 +1,9 @@
+<ipojo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="org.apache.felix.ipojo http://felix.apache.org/ipojo/schemas/CURRENT/core.xsd"
+  xmlns="org.apache.felix.ipojo" xmlns:ev="org.apache.felix.ipojo.handlers.event">
+  
+  <!-- 
+    Nothing complex here, just declares an instance of the OracleServlet.
+   -->
+  <instance component="de.akquinet.gomobile.dynamokos.client.servlet.OracleServlet" />
+</ipojo>
