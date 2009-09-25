@@ -14,6 +14,7 @@
     <module>client-ui-pull</module>
     <module>cometd-server</module>
     <module>cometd-bridge</module>
+    <module>client-ui-cometd</module>
     <module>runtime</module>
   </modules>
   

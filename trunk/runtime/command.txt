@@ -9,8 +9,14 @@ java -Dfelix.config.properties=file:conf/oracle-dosgi-zookeeper.properties -jar 
 java -Dfelix.config.properties=file:conf/client-dosgi-zookeeper.properties -jar bin/felix.jar cache/client-dosgi-zookeeper
 
 == DOSGI + Zookeeper + ajax pull version ==
+Linux : sh ./zookeeper/bin/zkServer.sh start // Requires Java 6
+Windows: zookeeper\bin\zkServer.cmd start    // Requires Java 6
+java -Dfelix.config.properties=file:conf/oracle-dosgi-zookeeper.properties -jar bin/felix.jar cache/oracle-dosgi-zookeeper
 java -Dfelix.config.properties=file:conf/client-dosgi-zookeeper-pull.properties -jar bin/felix.jar cache/client-dosgi-zookeeper-pull
 
 == DOSGI + Zookeeper + ajax cometd version ==
+Linux : sh ./zookeeper/bin/zkServer.sh start // Requires Java 6
+Windows: zookeeper\bin\zkServer.cmd start    // Requires Java 6
+java -Dfelix.config.properties=file:conf/oracle-dosgi-zookeeper.properties -jar bin/felix.jar cache/oracle-dosgi-zookeeper
 java -Dfelix.config.properties=file:conf/client-dosgi-zookeeper-cometd.properties -jar bin/felix.jar cache/client-dosgi-zookeeper-cometd
 
