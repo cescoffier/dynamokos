@@ -73,7 +73,18 @@ Refresh the page.
 That's it !
 
 = Post 3 =
-Coming soon
+Relaunch Zookeeper and the server platform as in the previous post.
+Then, to launch the pull version, launch:
+{{{
+java -Dfelix.config.properties=file:conf/client-dosgi-zookeeper-pull.properties -jar bin/felix.jar cache/client-dosgi-zookeeper-pull
+}}}
+
+To launch the push version, launch:
+{{{
+java -Dfelix.config.properties=file:conf/client-dosgi-zookeeper-cometd.properties -jar bin/felix.jar cache/client-dosgi-zookeeper-cometd
+}}}
+
+To see the dynamism impact, {{stop}} and {{start}} the bundle 11 from the server platform.
 
 = Post 4 =
 Coming soon
