@@ -72,7 +72,7 @@ Refresh the page.
 
 That's it !
 
-= Post 3 =
+= Post 3 : Propagating OSGi dynamism in web interfaces =
 Relaunch Zookeeper and the server platform as in the previous post.
 Then, to launch the pull version, launch:
 {{{
