@@ -16,10 +16,12 @@
         <include>runtime/bin/**</include>
         <include>runtime/bundle/**</include>
         <include>runtime/conf/**</include>
+        <include>runtime/zookeeper/**</include>
         <include>runtime/command.txt</include>
       </includes>
       <excludes>
         <exclude>**/target*</exclude>
+        <exclude>**/cache*</exclude>
         <exclude>target</exclude>
       </excludes>
       <useDefaultExcludes>true</useDefaultExcludes>
