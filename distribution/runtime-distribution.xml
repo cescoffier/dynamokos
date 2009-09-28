@@ -13,6 +13,7 @@
         <exclude>**/target*</exclude>
         <exclude>target</exclude>
         <exclude>**/pom.xml</exclude>
+        <exclude>**/cache*</exclude>
       </excludes>
       <useDefaultExcludes>true</useDefaultExcludes>
     </fileSet>
