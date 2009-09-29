@@ -60,33 +60,33 @@
   </script>
   
   <script type="text/javascript">
-			dojo.require("dojo._base.html");
-			dojo.require("dojox.cometd");
-			dojo.require("dojox.cometd.callbackPollTransport");
-			
-			
-			function updateUI (available) {
-					if (available) {
-						dojo.attr("qel","disabled",false);
-						dojo.attr("askbutton","disabled",false);
-						dojo.attr("imgball8","src","res/8ball.jpg");
-					}else {
-						dojo.attr("qel","disabled",true);
-						dojo.attr("askbutton","disabled",true);
-						dojo.attr("imgball8","src","res/Un8ball.jpg");
-					}
-			}
+      dojo.require("dojo._base.html");
+      dojo.require("dojox.cometd");
+      dojo.require("dojox.cometd.callbackPollTransport");
+      
+      
+      function updateUI (available) {
+          if (available) {
+            dojo.attr("qel","disabled",false);
+            dojo.attr("askbutton","disabled",false);
+            dojo.attr("imgball8","src","res/8ball.jpg");
+          }else {
+            dojo.attr("qel","disabled",true);
+            dojo.attr("askbutton","disabled",true);
+            dojo.attr("imgball8","src","res/Un8ball.jpg");
+          }
+      }
 
             dojo.addOnLoad(function() {
-				dojox.cometd.init("http://localhost:8080/cometd");
-				
-				dojox.cometd.subscribe("/oracle/state",function(message){
-					console.log("received",message);
-					updateUI(message.data.available);
-				});
-				
-				dojox.cometd.publish("/oracle/require",{ getavailability:"toto" });				
-				
+        dojox.cometd.init("http://localhost:8080/cometd");
+        
+        dojox.cometd.subscribe("/oracle/state",function(message){
+          console.log("received",message);
+          updateUI(message.data.available);
+        });
+        
+        dojox.cometd.publish("/oracle/require",{ getavailability:"toto" });				
+        
             });
   </script>
   
