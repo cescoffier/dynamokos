@@ -4,6 +4,7 @@ import java.util.Random;
 
 import org.apache.felix.ipojo.annotations.Component;
 import org.apache.felix.ipojo.annotations.Provides;
+import org.apache.felix.ipojo.annotations.ServiceProperty;
 
 import de.akquinet.gomobile.dynamokos.prediction.Prediction;
 
@@ -24,6 +25,9 @@ import de.akquinet.gomobile.dynamokos.prediction.Prediction;
 @Component(propagation=true)
 @Provides
 public class Oracle implements Prediction {
+
+	@ServiceProperty
+	private String myProp = "this is a remote service";
 
     /**
      * The Oracle secret...

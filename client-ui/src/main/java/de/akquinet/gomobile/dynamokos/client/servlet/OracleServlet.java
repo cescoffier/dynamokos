@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.felix.ipojo.annotations.Bind;
 import org.apache.felix.ipojo.annotations.Component;
 import org.apache.felix.ipojo.annotations.Invalidate;
 import org.apache.felix.ipojo.annotations.Requires;
@@ -95,5 +96,11 @@ public class OracleServlet extends HttpServlet {
         }
         
     }
+    
+    // DEBUG
+   	@Bind(optional=true, filter="(service.imported=true)")
+   	private void bindPrediction(Prediction p) {
+   		System.out.println("==============> Bound to an imported service");
+   	}
 
 }
